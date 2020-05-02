@@ -1,15 +1,15 @@
 package fr.localisation.homelocation.enterprise;
 
-import javax.persistence.CascadeType;
+import java.io.Serializable;
+import java.util.Collection;
+
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
-import fr.localisation.homelocation.departement.Departement;
+import fr.localisation.homelocation.authentification.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,18 +20,18 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Enterprise {
+public class Enterprise implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long id;
+	@NotNull
+	String mail;
+
 	@NotNull
 	String nom;
 	String raison_sociale;
 	@NotNull
 	String siren;
-	@NotNull
-	String mail;
+
 	@NotNull
 	String telPortable;
 	@NotNull
@@ -44,4 +44,8 @@ public class Enterprise {
 	String ville;
 	@NotNull
 	String password;
+	@ManyToMany
+	@JoinTable(name = "USERS_ROLES")
+	@NotNull
+	Collection<Role> roles;
 }

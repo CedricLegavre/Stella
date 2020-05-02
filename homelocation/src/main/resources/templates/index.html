@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Acceuille</title>
+<title>Acceuil</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -60,15 +60,14 @@
 			</div>
 
 			<div class="ml-5">
-				<li class="get-started" sec:authorize="isAnonymous()"><a
-					th:href="@{connexion}">Connexion</a></li>
+				<a href="/login" class="btn btn-primary" sec:authorize="isAnonymous()">Connexion</a>
 				<button sec:authorize="!isAnonymous()" type="button"
 					class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false">Compte</button>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="/dashboardEnterprise">Dashboard</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" th:href="@{logout}">Logout</a>
+					<a class="dropdown-item" th:href="@{/logout}">Logout</a>
 				</div>
 			</div>
 		</div>
@@ -86,7 +85,8 @@
 					<h2 data-aos="fade-up" data-aos-delay="400">Créer votre
 						plateforme click & collect et booster votre chiffre d'affaire.</h2>
 					<div data-aos="fade-up" data-aos-delay="800">
-						<a href="/subscription" class="btn-get-started scrollto">S'inscrire</a>
+						<a href="/subscription" sec:authorize="isAnonymous()" class="btn-get-started scrollto">S'inscrire</a>
+						<a href="/dashboardEnterprise" sec:authorize="!isAnonymous()" class="btn-get-started scrollto">Aller vers votre Dashboard</a>
 					</div>
 				</div>
 				<div class="col-lg-6 order-1 order-lg-2 hero-img"
