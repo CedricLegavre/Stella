@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz.thymeleaf/layout"
+	layout:decorator="TemplateDashboardEnterprise">
+<head>
+<title>Dashboard - Mes infos</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+
+		<div class=container>
+			<div
+				class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+				<div class="col-xl-10">
+					<h2 class="h2">Dashboard - Mes Infos</h2>
+				</div>
+				<div class="col-xl-2">
+					<a href="/MajInfosEntreprise" class="btn btn-primary">Modifier</a>
+				</div>
+			</div>
+			<table class="table border">
+				<thead class="thead-dark">
+					<tr>
+						<th class="col-xl-3 border">Informations</th>
+						<th class="col-xl-9 border">Valeurs</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th class="col-xl-3">Nom Entreprise :</th>
+						<td th:text="${ShowEnterprise.nom}"></td>
+					</tr>
+					<tr>
+						<th class="col-xl-3 ">Mail :</th>
+						<td th:text="${ShowEnterprise.mail}"></td>
+					</tr>
+					<tr>
+						<th class="col-xl-3 ">Siren :</th>
+						<td th:text="${ShowEnterprise.siren}"></td>
+					</tr>
+					<tr>
+						<th class="col-xl-3 ">Telephone :</th>
+						<td th:text="${ShowEnterprise.telPortable}"></td>
+					</tr>
+					<tr>
+						<th class="col-xl-3 ">Adresse :</th>
+						<td th:text="${ShowEnterprise.adresse}"></td>
+					</tr>
+					<tr>
+						<th class="col-xl-3">Ville :</th>
+						<td th:text="${ShowEnterprise.ville}"></td>
+					</tr>
+					<tr>
+						<th class="col-xl-3">Code Postale :</th>
+						<td th:text="${ShowEnterprise.codepostal}"></td>
+					</tr>
+					<tr>
+						<th class="col-xl-4">Status</th>
+						<td th:text="${statusEntreprise}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

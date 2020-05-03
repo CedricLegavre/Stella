@@ -3,6 +3,8 @@ package fr.localisation.homelocation.subscription;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -49,7 +51,31 @@ public class SubscriptionBusiness {
 
 		enterprise.setRoles(roles);
 		enterpriseRepository.save(enterprise);
-		return "dashboardEnterprise";
+		return "index";
+	}
+
+	@PostMapping(value = "/updateEnterprise")
+	public String MajInfosEntreprise(Model model, Enterprise enterprise, HttpSession httpSession) {
+
+		if (!enterprise.getPassword().equals(httpSession.getAttribute("password"))) {
+			PasswordEncoder passwordEncoder = passwordEncoder();
+			enterprise.setPassword(passwordEncoder.encode(enterprise.getPassword()));
+		}
+
+		Collection<Role> roles = new ArrayList<>();
+		Role role = new Role();
+		role.setDescription("Droit classique pour entreprise");
+		role.setRole("ADMIN");
+		roles.add(role);
+		enterprise.setRoles(roles);
+		enterprise.setId_StatusEntreprise((Long) httpSession.getAttribute("status"));
+		enterprise.setNom((String) httpSession.getAttribute("nom"));
+		enterprise.setMail((String) httpSession.getAttribute("mail"));
+		enterprise.setSiren((String) httpSession.getAttribute("siren"));
+
+		enterpriseRepository.save(enterprise);
+
+		return "/DashboardEntreprise/ProduitsEntreprise";
 	}
 
 	public PasswordEncoder passwordEncoder() {
