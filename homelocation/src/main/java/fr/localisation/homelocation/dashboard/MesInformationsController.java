@@ -49,6 +49,33 @@ public class MesInformationsController {
 		model.addAttribute("nom", httpSession.getAttribute("nom"));
 		return "/DashboardEntreprise/MajInfosEntreprise";
 	}
+	
+
+	@GetMapping(value = "/MesInfosEntreprise")
+	public String dashboardEntreprise(Model model, HttpSession httpSession, Enterprise entreprise) {
+
+		SecurityContext securityContext = (SecurityContext) httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
+		String username = securityContext.getAuthentication().getName();
+		entreprise = enterpriseRepository.findByMail(username);
+
+		if (entreprise.getId_StatusEntreprise().equals(4L)) {
+			model.addAttribute("statusEntreprise", "En cours de validation");
+		} else {
+			model.addAttribute("statusEntreprise", "Actif");
+		}
+		model.addAttribute("ShowEnterprise", entreprise);
+		httpSession.setAttribute("password", entreprise.getPassword());
+		httpSession.setAttribute("adresse", entreprise.getAdresse());
+		httpSession.setAttribute("CP", entreprise.getCodepostal());
+		httpSession.setAttribute("ville", entreprise.getVille());
+		httpSession.setAttribute("portable", entreprise.getTelPortable());
+		httpSession.setAttribute("mail", entreprise.getMail());
+		httpSession.setAttribute("siren", entreprise.getSiren());
+		httpSession.setAttribute("nom", entreprise.getNom());
+		httpSession.setAttribute("status", entreprise.getId_StatusEntreprise());
+		return "/DashboardEntreprise/MesInfosEntreprise";
+
+	}
 
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();

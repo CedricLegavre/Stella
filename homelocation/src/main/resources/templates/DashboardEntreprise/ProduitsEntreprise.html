@@ -9,13 +9,41 @@
 <body>
 
 	<div layout:fragment="content">
-		<div
-			class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-			<h1 class="h2">Dashboard - Produits</h1>
+		<div class=container>
+			<div
+				class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+				<div class="col-xl-10">
+					<h2 class="h2">Liste de Produits</h2>
+				</div>
+				<div class="col-xl-2">
+					<a href="/displayAddProduitsEntreprise" class="btn btn-primary">Ajouter
+						Produit</a>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body">
+					<table class="table">
+						<tr>
+							<th>Produit</th>
+							<th>NOM</th>
+							<th>Description</th>
+							<th>Pays d'origine</th>
+							<th>prixPoids</th>
+							<th>prix Unitaire</th>
+						</tr>
+						<tr th:each="p: ${Produits}">
+							<td><img src="/assets/img/photoProduit.jpg" width="150"
+								height="150" alt=""></td>
+							<td class="element" th:text="${p.nom}"></td>
+							<td th:text="${p.description}"></td>
+							<td th:text="${p.pays_origine}"></td>
+							<td th:text="${p.prixPoids}"></td>
+							<td th:text="${p.prixUnitaire}"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
 		</div>
-
-
-	</div>
-
 </body>
 </html>
