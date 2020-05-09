@@ -9,15 +9,17 @@
 <body>
 
 	<div layout:fragment="content">
-		<div class=container>
-			<div
-				class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-				<div class="col-xl-10">
-					<h2 class="h2">Liste de Produits</h2>
-				</div>
-				<div class="col-xl-2">
-					<a href="/displayAddProduitsEntreprise" class="btn btn-primary">Ajouter
-						Produit</a>
+		<div class=container-fluid>
+			<div class="row col-xl-12">
+				<div
+					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom col-xl-12">
+					<div class="col-xl-10">
+						<h2 class="h2">Liste de Produits</h2>
+					</div>
+					<div class="col-xl-2">
+						<a href="/displayAddProduitsEntreprise"
+							class="btn btn-primary text-left">Ajouter Produit</a>
+					</div>
 				</div>
 			</div>
 
@@ -31,19 +33,26 @@
 							<th>Pays d'origine</th>
 							<th>prixPoids</th>
 							<th>prix Unitaire</th>
+							<th>Action</th>
 						</tr>
 						<tr th:each="p: ${Produits}">
-							<td><img src="/assets/img/photoProduit.jpg" width="150"
-								height="150" alt=""></td>
+							<!--   <td><img src="/assets/img/photoProduit.jpg"  alt=""></td>-->
+							<td><img width="286" height="180"
+								th:src="@{'data:image/jpeg;base64,'+${image}}" /></td>
 							<td class="element" th:text="${p.nom}"></td>
 							<td th:text="${p.description}"></td>
 							<td th:text="${p.pays_origine}"></td>
 							<td th:text="${p.prixPoids}"></td>
 							<td th:text="${p.prixUnitaire}"></td>
+							<td><a href="/displayAddProduitsEntreprise"
+								class="btn btn-primary text-center mb-2">Modifier</a></br> <a
+								href="/displayAddProduitsEntreprise"
+								class="btn btn-danger text-center mb-2">Suprimer</a></br> <a
+								href="/displayAddProduitsEntreprise"
+								class="btn btn-success text-center mb-2">Activé</a></td>
 						</tr>
 					</table>
 				</div>
 			</div>
-		</div>
 </body>
 </html>

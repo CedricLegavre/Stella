@@ -15,8 +15,6 @@ body {
 	height: 100%;
 }
 
-
-
 a {
 	color: #3498db;
 }
@@ -37,18 +35,16 @@ h1, h2, h3, h4, h5, h6 {
 # Back to top button
 --------------------------------------------------------------*/
 .element {
-  margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
-  transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+	margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
+	transform: translateY(-50%);
+	/* tiré de la moitié de sa propre hauteur */
 }
 
-
-.center-div
-{
-  margin: auto;
-  width: 100px;
-  height: 100px;
+.center-div {
+	margin: 0 auto;
+	display: inline-block;
+	text-align: center;
 }
-
 
 .back-to-top {
 	position: fixed;
@@ -59,49 +55,40 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .special-card {
-/* create a custom class so you 
+	/* create a custom class so you 
    do not run into specificity issues 
    against bootstraps styles
    which tends to work better than using !important 
    (future you will thank you later)*/
-
-  background-color: rgba(245, 245, 245, 1);
-  opacity: .4;
+	background-color: rgba(245, 245, 245, 1);
+	opacity: .4;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+	max-width: 100%;
+	height: auto;
 }
 
-
 .background-body {
-	  background-image:url(../img/fond2.jpg);
-  
-  /* Image is centered vertically and horizontally at all times */
-  background-position: center center;
-  
-  /* Image doesn't repeat */
-  background-repeat: no-repeat;
-  
-  /* Makes the image fixed in the viewport so that it doesn't move when 
+	background-image: url(../img/fond2.jpg);
+	/* Image is centered vertically and horizontally at all times */
+	background-position: center center;
+	/* Image doesn't repeat */
+	background-repeat: no-repeat;
+	/* Makes the image fixed in the viewport so that it doesn't move when 
      the content height is greater than the image height */
-  background-attachment: fixed;
-  
-  /* This is what makes the background image rescale based on its container's size */
-  background-size: cover;
-  
-  /* Pick a solid background color that will be displayed while the background image is loading */
-  background-color:#464646;
-  
-  /* SHORTHAND CSS NOTATION
+	background-attachment: fixed;
+	/* This is what makes the background image rescale based on its container's size */
+	background-size: cover;
+	/* Pick a solid background color that will be displayed while the background image is loading */
+	background-color: #464646;
+
+	/* SHORTHAND CSS NOTATION
    * background: url(background-photo.jpg) center center cover no-repeat fixed;
    */
 }
-	}
 
-
-
+}
 .back-to-top i {
 	display: flex;
 	align-items: center;
@@ -554,12 +541,22 @@ img {
 100%
 {
 transform
+
+
 :
+
  
+
 translateY
-(-10px);
+
+
+(-10
+px
+);
+
 
   
+
 }
 }
 @
@@ -570,12 +567,22 @@ keyframes up-down { 0% {
 100%
 {
 transform
+
+
 :
+
  
+
 translateY
-(-10px);
+
+
+(-10
+px
+);
+
 
   
+
 }
 }
 
@@ -1576,12 +1583,22 @@ section {
 100%
 {
 transform
+
+
 :
+
  
+
 rotate
-(360deg);
+
+
+(360
+deg
+);
+
 
   
+
 }
 }
 @
@@ -1592,12 +1609,22 @@ keyframes animate-loading { 0% {
 100%
 {
 transform
+
+
 :
+
  
+
 rotate
-(360deg);
+
+
+(360
+deg
+);
+
 
   
+
 }
 }
 

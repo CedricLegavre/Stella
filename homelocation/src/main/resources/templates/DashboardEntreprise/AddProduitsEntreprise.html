@@ -15,7 +15,8 @@
 
 		<!-- ======= Hero Section ======= -->
 		<form class="needs-validation" novalidate
-			th:action="@{AddProduitEntreprise}" method="post">
+			th:action="@{AddProduitEntreprise}" enctype="multipart/form-data"
+			method="post">
 			<section id=incription class="d-flex align-items-center">
 				<div class="container center ">
 					<div class="row">
@@ -61,6 +62,11 @@
 								<div class="invalid-feedback">Valeur incorrecte ou non
 									saisie</div>
 							</div>
+							<div class="form-group">
+								<label>Image Produit</label> <input type="file"
+									th:values="${produit.image}" class="form-control-file"
+									name="file">
+							</div>
 						</div>
 						<div class="col-lg-12 text-center">
 							<a href="/ProduitsEntreprise" class="btn btn-primary">Retour</a>
@@ -69,7 +75,6 @@
 					</div>
 				</div>
 		</form>
-
 
 		<!-- Vendor JS Files -->
 		<script src="assets/vendor/jquery/jquery.min.js"></script>
