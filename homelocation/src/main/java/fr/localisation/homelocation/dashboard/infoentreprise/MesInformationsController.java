@@ -1,4 +1,4 @@
-package fr.localisation.homelocation.dashboard;
+package fr.localisation.homelocation.dashboard.infoentreprise;
 
 import java.util.ArrayList;
 import java.util.Collection;

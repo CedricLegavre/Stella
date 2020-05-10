@@ -4,6 +4,25 @@
 	layout:decorator="TemplateDashboardEnterprise"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
+<script>
+function updateSize() {
+  var nBytes = 0,
+      oFiles = document.getElementById("uploadInput").files,
+      nFiles = oFiles.length;
+  for (var nFileId = 0; nFileId < nFiles; nFileId++) {
+    nBytes += oFiles[nFileId].size;
+  }
+  var sOutput = nBytes + " bytes";
+  // partie de code facultative pour l'approximation des multiples
+  for (var aMultiples = ["KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"], nMultiple = 0, nApprox = nBytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
+    sOutput = nApprox.toFixed(3) + " " + aMultiples[nMultiple] + " (" + nBytes + " bytes)";
+  }
+  // fin de la partie de code facultative
+  document.getElementById("fileNum").innerHTML = nFiles;
+  document.getElementById("fileSize").innerHTML = sOutput;
+}
+</script>
+
 <title>Dashboard - Produits</title>
 </head>
 <body>
@@ -63,7 +82,7 @@
 									saisie</div>
 							</div>
 							<div class="form-group">
-								<label>Image Produit</label> <input type="file"
+								<label>Image Produit</label> <input type="file" id="uploadInput"
 									th:values="${produit.image}" class="form-control-file"
 									name="file">
 							</div>
@@ -122,6 +141,50 @@
 								}, false);
 			})();
 		</script>
+
+		<script>
+			var current_file = = document.getElementById('file').files[0];
+			var numFiles = files.length;
+			alert(numFiles);
+			
+			var reader = new FileReader();
+			if (current_file.type.indexOf('image') == 0) {
+				reader.onload = function(event) {
+					var image = new Image();
+					image.src = event.target.result;
+
+					image.onload = function() {
+						var maxWidth = 1024, maxHeight = 1024, imageWidth = image.width, imageHeight = image.height;
+
+						if (imageWidth > imageHeight) {
+							if (imageWidth > maxWidth) {
+								imageHeight *= maxWidth / imageWidth;
+								imageWidth = maxWidth;
+							}
+						} else {
+							if (imageHeight > maxHeight) {
+								imageWidth *= maxHeight / imageHeight;
+								imageHeight = maxHeight;
+							}
+						}
+
+						var canvas = document.createElement('canvas');
+						canvas.width = imageWidth;
+						canvas.height = imageHeight;
+						image.width = imageWidth;
+						image.height = imageHeight;
+						var ctx = canvas.getContext("2d");
+						ctx.drawImage(this, 0, 0, imageWidth, imageHeight);
+
+						$('img#apercu').src = canvas
+								.toDataURL(current_file.type);
+					}
+				}
+				reader.readAsDataURL(current_file);
+			}
+		</script>
+
+
 	</div>
 
 </body>

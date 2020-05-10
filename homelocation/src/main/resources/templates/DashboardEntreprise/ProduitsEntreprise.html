@@ -38,7 +38,7 @@
 						<tr th:each="p: ${Produits}">
 							<!--   <td><img src="/assets/img/photoProduit.jpg"  alt=""></td>-->
 							<td><img width="286" height="180"
-								th:src="@{'data:image/jpeg;base64,'+${image}}" /></td>
+								th:src="@{'data:image/jpeg;base64,'+${p.image}}" /></td>
 							<td class="element" th:text="${p.nom}"></td>
 							<td th:text="${p.description}"></td>
 							<td th:text="${p.pays_origine}"></td>
